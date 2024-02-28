@@ -1,15 +1,14 @@
 import { TiLocationArrow } from 'react-icons/ti'
 import { useDebounceValue } from 'usehooks-ts'
 
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-
-import { Button } from './ui/button'
-import { Input } from './ui/input'
 
 export default function SearchInput() {
   const [searchQuery, setValue] = useDebounceValue('', 500)
