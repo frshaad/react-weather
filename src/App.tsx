@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { Button } from './components/ui/button'
 
 export default function App() {
@@ -13,6 +15,7 @@ export default function App() {
         atque tempore quae saepe distinctio tenetur.
       </p>
       <Button>Click me</Button>
+      <Link to="/settings">Settings</Link>
     </div>
   )
 }
