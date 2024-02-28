@@ -1,10 +1,7 @@
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { createSlice } from '@reduxjs/toolkit'
 
-type Location = {
-  id: string
-  name: string
-}
+import { Location } from '@/types'
 
 export type LocationsSlice = {
   locations: Location[]
