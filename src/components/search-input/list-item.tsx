@@ -9,14 +9,14 @@ type Props = {
 export default function ListItem({ children, isSkeleton }: Props) {
   if (isSkeleton) {
     return (
-      <li className="flex h-9 w-[214px] items-center justify-center">
+      <li className="flex h-9 w-[214px] items-center justify-start pl-4">
         <Skeleton className="h-[17px] w-28" />
       </li>
     )
   }
 
   return (
-    <Button variant="ghost" size="sm" className="w-full">
+    <Button variant="ghost" size="sm" className="flex w-full justify-start">
       {children}
     </Button>
   )
