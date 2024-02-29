@@ -6,8 +6,8 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import ReduxPersistor from '@/app/redux-persistor'
 import ReduxProvider from '@/app/redux-provider'
-import ReduxPersistor from '@/app/resux-persistor'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Location, Locations, NotFound, Settings } from '@/pages'
 

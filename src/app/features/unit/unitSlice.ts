@@ -1,6 +1,8 @@
 // actions.ts
 import { createSlice } from '@reduxjs/toolkit'
 
+import { RootState } from '@/app/store'
+
 interface UnitState {
   unit: 'metric' | 'imperial' // Supported units by OpenWeatherMap API
 }
@@ -13,11 +15,15 @@ const unitSlice = createSlice({
   name: 'unit',
   initialState,
   reducers: {
-    toggleUnit: state => {
-      state.unit = state.unit === 'metric' ? 'imperial' : 'metric'
+    setMetric: state => {
+      state.unit = 'metric'
+    },
+    setImperial: state => {
+      state.unit = 'imperial'
     },
   },
 })
 
-export const { toggleUnit } = unitSlice.actions
+export const selectUnit = (state: RootState) => state.unit.unit
+export const { setMetric, setImperial } = unitSlice.actions
 export default unitSlice.reducer
