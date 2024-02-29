@@ -1,4 +1,5 @@
 import { Navigation } from 'lucide-react'
+import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -8,13 +9,43 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip'
 
+type Coords = {
+  latitude: number
+  longitude: number
+}
+
 export default function GeoLocationButton() {
+  const [location, setLocation] = useState<Coords | null>(null)
+  const [error, setError] = useState<string | null>(null)
+
+  const getLocation = () => {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const { latitude, longitude } = position.coords
+        setLocation({ latitude, longitude })
+      },
+      error => setError(error.message)
+    )
+  }
+
+  if (location) {
+    console.log({ lat: location.latitude, lon: location.longitude })
+  }
+  if (error) {
+    console.log(error)
+  }
+
   return (
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button variant="outline" size="icon" type="submit">
-            <Navigation size={22} />
+          <Button
+            variant="outline"
+            size="icon"
+            type="submit"
+            onClick={getLocation}
+          >
+            <Navigation size={18} />
           </Button>
         </TooltipTrigger>
         <TooltipContent>
