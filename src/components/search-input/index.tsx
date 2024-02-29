@@ -36,7 +36,7 @@ export default function SearchInput() {
               <ListItem isSkeleton />
               <ListItem isSkeleton />
               <ListItem isSkeleton />
-            </SuggestionCard> // Loading skeleton component
+            </SuggestionCard>
           ) : (
             !isError &&
             results && (
