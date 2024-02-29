@@ -11,6 +11,9 @@ import {
 } from '@/components/ui/tooltip'
 import { useSearchLocation } from '@/hooks/useSearchLocation'
 
+import ListItem from './list-item'
+import SuggestionCard from './suggestion-card'
+
 export default function SearchInput() {
   const [searchQuery, setValue] = useDebounceValue('', 500)
 
@@ -25,16 +28,27 @@ export default function SearchInput() {
           defaultValue=""
           onChange={e => setValue(e.target.value)}
         />
-        <div className="absolute w-fit">
-          {isLoading && searchQuery.length > 0
-            ? 'Loading'
-            : !isError &&
-              results &&
-              results.map((result, i) => (
-                <p key={i}>
-                  {result.name}, {result.country}
-                </p>
-              ))}
+        <div className="absolute mt-2 w-full">
+          {isLoading && searchQuery.length > 0 ? (
+            <SuggestionCard>
+              <ListItem isSkeleton />
+              <ListItem isSkeleton />
+              <ListItem isSkeleton />
+              <ListItem isSkeleton />
+              <ListItem isSkeleton />
+            </SuggestionCard> // Loading skeleton component
+          ) : (
+            !isError &&
+            results && (
+              <SuggestionCard>
+                {results.map((result, i) => (
+                  <ListItem key={i}>
+                    {result.name}, {result.country}
+                  </ListItem>
+                ))}
+              </SuggestionCard>
+            )
+          )}
         </div>
       </div>
       <TooltipProvider>
