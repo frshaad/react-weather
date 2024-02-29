@@ -1,4 +1,4 @@
-import { GoHome } from 'react-icons/go'
+import { Home } from 'lucide-react'
 import { Link, useRouteError } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
@@ -18,7 +18,7 @@ export default function NotFound() {
         <p className="mt-4 text-gray-500">We can't find that page.</p>
         <Button variant="outline" className="mt-8" asChild>
           <Link to="/">
-            <GoHome className="mr-2" size={18} />
+            <Home className="mr-2" size={18} />
             Back to Home
           </Link>
         </Button>

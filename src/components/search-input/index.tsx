@@ -1,16 +1,9 @@
-import { TiLocationArrow } from 'react-icons/ti'
 import { useDebounceValue } from 'usehooks-ts'
 
-import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip'
 import { useSearchLocation } from '@/hooks/useSearchLocation'
 
+import GeoLocationButton from './geolocation-button'
 import ListItem from './list-item'
 import SuggestionCard from './suggestion-card'
 
@@ -51,18 +44,7 @@ export default function SearchInput() {
           )}
         </div>
       </div>
-      <TooltipProvider>
-        <Tooltip>
-          <TooltipTrigger asChild>
-            <Button variant="outline" size="icon" type="submit">
-              <TiLocationArrow size={22} />
-            </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Use your current location</p>
-          </TooltipContent>
-        </Tooltip>
-      </TooltipProvider>
+      <GeoLocationButton />
     </div>
   )
 }
