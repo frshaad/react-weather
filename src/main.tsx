@@ -6,10 +6,12 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
+import ReduxProvider from '@/app/redux-provider'
+import ReduxPersistor from '@/app/resux-persistor'
+import { ThemeProvider } from '@/components/theme-provider'
+import { Location, Locations, NotFound, Settings } from '@/pages'
+
 import App from './App'
-import ReduxProvider from './app/redux-provider'
-import ReduxPersistor from './app/resux-persistor'
-import { Location, Locations, NotFound, Settings } from './pages'
 
 const router = createBrowserRouter([
   {
@@ -43,8 +45,10 @@ root.render(
     <ReduxProvider>
       <ReduxPersistor>
         <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-          <ReactQueryDevtools initialIsOpen={false} />
+          <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+            <RouterProvider router={router} />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </ThemeProvider>
         </QueryClientProvider>
       </ReduxPersistor>
     </ReduxProvider>

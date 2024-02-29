@@ -20,7 +20,7 @@ export default function SearchInput() {
   const { data: results, isError, isLoading } = useSearchLocation(searchQuery)
 
   return (
-    <div className="flex w-full max-w-sm items-center space-x-2">
+    <div className="flex w-full items-center space-x-2">
       <div className="relative">
         <Input
           type="text"
