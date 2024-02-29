@@ -4,11 +4,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import { Provider } from 'react-redux'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import App from './App'
-import { store } from './app/store'
+import ReduxProvider from './app/redux-provider'
+import ReduxPersistor from './app/resux-persistor'
 import { Location, Locations, NotFound, Settings } from './pages'
 
 const router = createBrowserRouter([
@@ -40,11 +40,13 @@ const root = createRoot(rootElement)
 
 root.render(
   <StrictMode>
-    <Provider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ReactQueryDevtools initialIsOpen={false} />
-      </QueryClientProvider>
-    </Provider>
+    <ReduxProvider>
+      <ReduxPersistor>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </ReduxPersistor>
+    </ReduxProvider>
   </StrictMode>
 )
