@@ -7,3 +7,8 @@ export type Location = {
   country: string
   state: string
 }
+
+export type Coords = {
+  lat: number
+  lon: number
+}

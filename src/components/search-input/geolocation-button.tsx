@@ -8,11 +8,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-
-type Coords = {
-  latitude: number
-  longitude: number
-}
+import type { Coords } from '@/types'
 
 export default function GeoLocationButton() {
   const [location, setLocation] = useState<Coords | null>(null)
@@ -22,14 +18,14 @@ export default function GeoLocationButton() {
     navigator.geolocation.getCurrentPosition(
       position => {
         const { latitude, longitude } = position.coords
-        setLocation({ latitude, longitude })
+        setLocation({ lat: latitude, lon: longitude })
       },
       error => setError(error.message)
     )
   }
 
   if (location) {
-    console.log({ lat: location.latitude, lon: location.longitude })
+    console.log({ lat: location.lat, lon: location.lon })
   }
   if (error) {
     console.log(error)
