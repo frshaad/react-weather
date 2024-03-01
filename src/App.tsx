@@ -1,6 +1,8 @@
-import { UnitToggle } from '@/app/features/unit/toggle-unit'
-import { ModeToggle } from '@/components/mode-toggle'
-import SearchInput from '@/components/search-input'
+import { lazy } from 'react'
+
+const UnitToggle = lazy(() => import('@/app/features/unit/toggle-unit'))
+const ModeToggle = lazy(() => import('@/components/mode-toggle'))
+const SearchInput = lazy(() => import('@/components/search-input'))
 
 export default function App() {
   return (

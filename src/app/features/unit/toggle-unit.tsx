@@ -11,7 +11,7 @@ import {
 
 import { selectUnit, setImperial, setMetric } from './unitSlice'
 
-export function UnitToggle() {
+export default function UnitToggle() {
   const currentUnit = useAppSelector(selectUnit)
   const dispatch = useAppDispatch()
 
