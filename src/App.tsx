@@ -1,6 +1,6 @@
 import { lazy } from 'react'
 
-import { useFetchCurrent } from './hooks/useFetchCurrent'
+import { useFetchCurrent } from '@/hooks/useFetchCurrent'
 
 const UnitToggle = lazy(() => import('@/app/features/unit/toggle-unit'))
 const ModeToggle = lazy(() => import('@/components/mode-toggle'))
