@@ -1,4 +1,4 @@
-export type HourlyWeather = {
+export type ForecastWeather = {
   cod: string
   message: number
   cnt: number
@@ -52,7 +52,7 @@ export type Main = {
 }
 
 export type Rain = {
-  '1h': number
+  '3h': number
 }
 
 export type Sys = {

@@ -1,19 +1,19 @@
 import { lazy } from 'react'
 
-import { useFetchCurrent } from '@/hooks/useFetchCurrent'
+import { useFetchForecast } from '@/hooks/useFetchForecast'
 
 const UnitToggle = lazy(() => import('@/app/features/unit/toggle-unit'))
 const ModeToggle = lazy(() => import('@/components/mode-toggle'))
 const SearchInput = lazy(() => import('@/components/search-input'))
 
 export default function App() {
-  const { data: currentWeather, isLoading } = useFetchCurrent(
+  const { data: forecastWeather, isLoading } = useFetchForecast(
     36.63296126999999,
     52.27092741999998
   )
 
-  if (!isLoading && !!currentWeather) {
-    console.log(currentWeather)
+  if (!isLoading && !!forecastWeather) {
+    console.log(forecastWeather)
   }
 
   return (
