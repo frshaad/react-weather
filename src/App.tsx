@@ -7,13 +7,13 @@ const ModeToggle = lazy(() => import('@/components/mode-toggle'))
 const SearchInput = lazy(() => import('@/components/search-input'))
 
 export default function App() {
-  const { data, isLoading } = useFetchCurrent(
+  const { data: currentWeather, isLoading } = useFetchCurrent(
     36.63296126999999,
     52.27092741999998
   )
 
-  if (!isLoading && !!data) {
-    console.log(data)
+  if (!isLoading && !!currentWeather) {
+    console.log(currentWeather)
   }
 
   return (
