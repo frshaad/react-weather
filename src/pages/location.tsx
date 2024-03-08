@@ -1,11 +1,11 @@
 import { useParams } from 'react-router-dom'
 
 type LocationParam = {
-  locationId: string
+  locationCoords: string
 }
 
 export default function Location() {
-  const { locationId } = useParams<LocationParam>()
+  const { locationCoords } = useParams<LocationParam>()
 
-  return <div>Location: {locationId}</div>
+  return <div>Location: {locationCoords}</div>
 }

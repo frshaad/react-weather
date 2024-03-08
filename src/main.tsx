@@ -13,10 +13,8 @@ import { ThemeProvider } from '@/components/theme-provider'
 
 import App from './App'
 
-const Settings = lazy(() => import('@/pages/settings'))
 const NotFound = lazy(() => import('@/pages/not-found'))
 const Location = lazy(() => import('@/pages/location'))
-const Locations = lazy(() => import('@/pages/locations'))
 
 const router = createBrowserRouter([
   {
@@ -25,19 +23,19 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: '/settings',
-    element: <Settings />,
+    path: '/:locationCoords',
+    element: <Location />,
   },
-  {
-    path: '/locations',
-    element: <Locations />,
-    children: [
-      {
-        path: '/locations/:locationId',
-        element: <Location />,
-      },
-    ],
-  },
+  // {
+  //   path: '/locations',
+  //   element: <Locations />,
+  //   children: [
+  //     {
+  //       path: '/locations/:locationId',
+  //       element: <Location />,
+  //     },
+  //   ],
+  // },
 ])
 
 const queryClient = new QueryClient()

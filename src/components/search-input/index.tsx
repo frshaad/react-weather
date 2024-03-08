@@ -35,9 +35,7 @@ export default function SearchInput() {
             results && (
               <SuggestionCard>
                 {results.map((result, i) => (
-                  <ListItem key={i}>
-                    {result.name}, {result.country}
-                  </ListItem>
+                  <ListItem key={i} GeoLocation={result} />
                 ))}
               </SuggestionCard>
             )
