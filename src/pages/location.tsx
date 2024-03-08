@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom'
 
+import CurrentOverview from '@/components/current-overview'
+
 type LocationParam = {
   locationCoords: string
 }
@@ -7,5 +9,13 @@ type LocationParam = {
 export default function Location() {
   const { locationCoords } = useParams<LocationParam>()
 
-  return <div>Location: {locationCoords}</div>
+  if (!locationCoords) {
+    return <h2>Loading...</h2>
+  }
+
+  return (
+    <section>
+      <CurrentOverview locationCoords={locationCoords} />
+    </section>
+  )
 }

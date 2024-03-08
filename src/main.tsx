@@ -21,21 +21,13 @@ const router = createBrowserRouter([
     path: '/',
     element: <App />,
     errorElement: <NotFound />,
+    children: [
+      {
+        path: '/:locationCoords',
+        element: <Location />,
+      },
+    ],
   },
-  {
-    path: '/:locationCoords',
-    element: <Location />,
-  },
-  // {
-  //   path: '/locations',
-  //   element: <Locations />,
-  //   children: [
-  //     {
-  //       path: '/locations/:locationId',
-  //       element: <Location />,
-  //     },
-  //   ],
-  // },
 ])
 
 const queryClient = new QueryClient()
