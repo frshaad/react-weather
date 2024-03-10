@@ -40,8 +40,6 @@ export default function CurrentOverview({ locationCoords }: Props) {
   if (isLoading) return <LoadingSkeleton />
   if (isError) return <h2>{error.message}</h2>
 
-  console.log(currentWeahter)
-
   const {
     name,
     dt,
