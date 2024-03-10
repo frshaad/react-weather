@@ -18,7 +18,7 @@ export default function HumidityIndicator({ humididty }: Props) {
   }
 
   return (
-    <p
+    <div
       className={cn('capitalize font-bold text-md', {
         'text-blue-500/70': indicator === 'humid',
         'text-green-500/70': indicator === 'comfort',
@@ -42,6 +42,6 @@ export default function HumidityIndicator({ humididty }: Props) {
           </>
         )}
       </p>
-    </p>
+    </div>
   )
 }

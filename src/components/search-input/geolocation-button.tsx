@@ -1,5 +1,6 @@
 import { Navigation } from 'lucide-react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -11,7 +12,8 @@ import {
 import type { Coords } from '@/types'
 
 export default function GeoLocationButton() {
-  const [location, setLocation] = useState<Coords | null>(null)
+  const navigate = useNavigate()
+  const [, setLocation] = useState<Coords | null>(null)
   const [error, setError] = useState<string | null>(null)
 
   const getLocation = () => {
@@ -19,14 +21,12 @@ export default function GeoLocationButton() {
       position => {
         const { latitude, longitude } = position.coords
         setLocation({ lat: latitude, lon: longitude })
+        navigate(`/${latitude},${longitude}`)
       },
       error => setError(error.message)
     )
   }
 
-  if (location) {
-    console.log({ lat: location.lat, lon: location.lon })
-  }
   if (error) {
     console.log(error)
   }
