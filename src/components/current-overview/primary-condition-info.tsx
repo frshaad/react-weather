@@ -31,7 +31,7 @@ export default function PrimaryConditionInfo({ data }: Props) {
 
   return (
     <div className="h-full space-y-4 rounded-lg border p-8 shadow-lg backdrop-blur-md transition duration-200 hover:scale-[1.02]">
-      <WeatherIcon className="mb-5 size-24 text-[#2193b0]" />
+      <WeatherIcon className="mb-2 size-32 text-[#2193b0]" />
       <p className="inline-block bg-gradient-to-bl from-[#6dd5ed] to-[#2193b0] bg-clip-text text-4xl font-bold text-transparent">
         {getTempWithUnit(temp)}
       </p>
