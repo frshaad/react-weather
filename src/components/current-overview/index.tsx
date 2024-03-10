@@ -15,6 +15,7 @@ import { CurrentWeather } from '@/types/current-weather.type'
 
 import ConditionInfo from './condition-info'
 import HumidityIndicator from './humidity-indicator'
+import LoadingSkeleton from './loading-skeleton'
 import PressureIndicator from './pressure-indicator'
 import PrimaryConditionInfo from './primary-condition-info'
 import WindDirection from './wind-direction'
@@ -36,7 +37,7 @@ export default function CurrentOverview({ locationCoords }: Props) {
     error,
   } = useFetchCurrent(lat, lon)
 
-  if (isLoading) return <h2>Loading...</h2>
+  if (isLoading) return <LoadingSkeleton />
   if (isError) return <h2>{error.message}</h2>
 
   console.log(currentWeahter)
