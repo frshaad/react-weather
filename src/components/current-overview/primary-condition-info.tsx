@@ -1,5 +1,7 @@
 import { Calendar, LocateIcon } from 'lucide-react'
 
+import { selectUnit } from '@/app/features/unit/unitSlice'
+import { useAppSelector } from '@/app/hooks'
 import { convertDtToLocalTime } from '@/lib/convertDtToLocalTime'
 import { getWeatherIcon } from '@/lib/getWeatherIcon'
 
@@ -17,6 +19,7 @@ type Props = {
 
 export default function PrimaryConditionInfo({ data }: Props) {
   const { country, description, dt, feels_like, icon, name, temp } = data
+  const unit = useAppSelector(selectUnit)
 
   const local_time = convertDtToLocalTime(dt)
   const WeatherIcon = getWeatherIcon(icon)
@@ -25,11 +28,15 @@ export default function PrimaryConditionInfo({ data }: Props) {
     <div className="h-full space-y-4 rounded-lg border p-8 shadow-lg backdrop-blur-md transition duration-200 hover:scale-[1.02]">
       <WeatherIcon className="mb-5 size-24 text-[#2193b0]" />
       <p className="inline-block bg-gradient-to-bl from-[#6dd5ed] to-[#2193b0] bg-clip-text text-4xl font-bold text-transparent">
-        {temp.toFixed(0)}°C
+        {temp.toFixed(0)}
+        {unit === 'metric' ? '°C' : '°F'}
       </p>
       <p className="text-sm">
         Feels like{' '}
-        <span className="text-lg font-normal">{feels_like.toFixed(0)}°C</span>
+        <span className="text-lg font-normal">
+          {feels_like.toFixed(0)}
+          {unit === 'metric' ? '°C' : '°F'}
+        </span>
       </p>
       <p className="text-sm font-semibold capitalize">{description}</p>
       <div className="w-full border-y" />

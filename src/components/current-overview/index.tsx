@@ -7,6 +7,8 @@ import {
   Wind,
 } from 'lucide-react'
 
+import { selectUnit } from '@/app/features/unit/unitSlice'
+import { useAppSelector } from '@/app/hooks'
 import { useFetchCurrent } from '@/hooks/useFetchCurrent'
 import { epochToHhMm } from '@/lib/convertEpochToTime'
 import { CurrentWeather } from '@/types/current-weather.type'
@@ -22,6 +24,7 @@ type Props = {
 }
 
 export default function CurrentOverview({ locationCoords }: Props) {
+  const unit = useAppSelector(selectUnit)
   const parts = locationCoords.split(',')
 
   const lat = parseInt(parts[0])
@@ -50,6 +53,9 @@ export default function CurrentOverview({ locationCoords }: Props) {
   } = currentWeahter as CurrentWeather
 
   const { sunriseTime, sunsetTime } = epochToHhMm(sunrise, sunset, timezone)
+  const windSpeed = unit === 'metric' ? speed * 3.6 : speed * 2.23694
+  const visibilityRange =
+    unit === 'metric' ? visibility / 1000 : visibility / 1609
 
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
@@ -70,7 +76,7 @@ export default function CurrentOverview({ locationCoords }: Props) {
         <ConditionInfo
           title="wind"
           icon={Wind}
-          data={`${(speed * 3.6).toFixed(1)} km/h`}
+          data={`${windSpeed.toFixed(1)} ${unit === 'metric' ? 'km/h' : 'mph'}`}
         >
           <WindDirection windDeg={deg} />
         </ConditionInfo>
@@ -96,7 +102,7 @@ export default function CurrentOverview({ locationCoords }: Props) {
         <ConditionInfo
           title="visibility"
           icon={Telescope}
-          data={`${visibility / 1000} km`}
+          data={`${visibilityRange.toFixed(1)} ${unit === 'metric' ? 'km' : 'miles'}`}
         />
       </div>
       <div className="sm:row-start-5 md:col-start-3 md:row-start-3">
