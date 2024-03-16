@@ -1,16 +1,8 @@
-import {
-  CircleGauge,
-  Droplets,
-  Sunrise,
-  Sunset,
-  Telescope,
-  Wind,
-} from 'lucide-react'
+import { CircleGauge, Cloudy, Droplets, Telescope, Wind } from 'lucide-react'
 
 import { selectUnit } from '@/app/features/unit/unitSlice'
 import { useAppSelector } from '@/app/hooks'
 import { useFetchCurrent } from '@/hooks/useFetchCurrent'
-import { epochToHhMm } from '@/lib/convertEpochToTime'
 import { CurrentWeather } from '@/types/current-weather.type'
 
 import ConditionInfo from './condition-info'
@@ -43,15 +35,14 @@ export default function CurrentOverview({ locationCoords }: Props) {
   const {
     name,
     dt,
-    sys: { country, sunrise, sunset },
+    sys: { country },
     weather: [{ description, icon }],
     main: { feels_like, humidity, pressure, temp },
     visibility,
-    timezone,
     wind: { deg, speed },
+    clouds: { all: cloud_cover },
   } = currentWeahter as CurrentWeather
 
-  const { sunriseTime, sunsetTime } = epochToHhMm(sunrise, sunset, timezone)
   const windSpeed = unit === 'metric' ? speed * 3.6 : speed * 2.23694
   const visibilityRange =
     unit === 'metric' ? visibility / 1000 : visibility / 1609
@@ -90,7 +81,11 @@ export default function CurrentOverview({ locationCoords }: Props) {
         </ConditionInfo>
       </div>
       <div className="sm:row-start-4 md:col-start-2 md:row-start-3">
-        <ConditionInfo title="sunrise" icon={Sunrise} data={sunriseTime} />
+        <ConditionInfo
+          title="cloud cover"
+          icon={Cloudy}
+          data={`${cloud_cover}%`}
+        />
       </div>
       <div className="sm:row-start-4 md:col-start-3 md:row-start-1">
         <ConditionInfo title="humidity" icon={Droplets} data={`${humidity}%`}>
@@ -103,9 +98,6 @@ export default function CurrentOverview({ locationCoords }: Props) {
           icon={Telescope}
           data={`${visibilityRange.toFixed(1)} ${unit === 'metric' ? 'km' : 'miles'}`}
         />
-      </div>
-      <div className="sm:row-start-5 md:col-start-3 md:row-start-3">
-        <ConditionInfo title="sunset" icon={Sunset} data={sunsetTime} />
       </div>
     </div>
   )
