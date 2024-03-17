@@ -1,32 +1,36 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { DebouncedState } from 'usehooks-ts'
 
 import { Button } from '@/components/ui/button'
-import { Skeleton } from '@/components/ui/skeleton'
 import { GeoLocation } from '@/types'
 
 type Props = React.ComponentPropsWithoutRef<'button'> & {
   GeoLocation?: GeoLocation
-  isSkeleton?: boolean
+
+  setQueryString: DebouncedState<(value: string) => void>
 }
 
-export default function ListItem({ isSkeleton, GeoLocation }: Props) {
-  if (isSkeleton) {
-    return (
-      <li className="flex h-9 w-[214px] items-center justify-start pl-4">
-        <Skeleton className="h-[17px] w-28" />
-      </li>
-    )
+export default function ListItem({ GeoLocation, setQueryString }: Props) {
+  const navigate = useNavigate()
+  const handleClick = () => {
+    setQueryString('')
+    navigate(`/${GeoLocation?.lat},${GeoLocation?.lon}`)
   }
 
   return (
     <Button
       variant="ghost"
       size="sm"
-      className="flex w-full justify-start"
+      className="flex w-full justify-start overflow-hidden"
+      onClick={handleClick}
       asChild
     >
-      <Link to={`${GeoLocation?.lat},${GeoLocation?.lon}`}>
-        {GeoLocation?.name}, {GeoLocation?.country}
+      <Link to={`/${GeoLocation?.lat},${GeoLocation?.lon}`}>
+        <span className="font-semibold">{GeoLocation?.name}</span>
+        {!!GeoLocation?.state &&
+          GeoLocation.state.length < 9 &&
+          `,${GeoLocation.state} `}
+        ,{GeoLocation?.country}
       </Link>
     </Button>
   )

@@ -17,5 +17,6 @@ export const useSearchLocation = (query: string) => {
   return useQuery({
     queryKey: [query, 'location-search'],
     queryFn: () => fetchGeolocation(query),
+    enabled: query.length > 2,
   })
 }

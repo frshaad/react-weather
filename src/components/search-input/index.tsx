@@ -6,9 +6,10 @@ import { useSearchLocation } from '@/hooks/useSearchLocation'
 import GeoLocationButton from './geolocation-button'
 import ListItem from './list-item'
 import SuggestionCard from './suggestion-card'
+import SuggestionCardSkeleton from './suggestion-card.skeleton'
 
 export default function SearchInput() {
-  const [searchQuery, setValue] = useDebounceValue('', 500)
+  const [searchQuery, setValue] = useDebounceValue('', 700)
 
   const { data: results, isError, isLoading } = useSearchLocation(searchQuery)
 
@@ -23,20 +24,18 @@ export default function SearchInput() {
         />
         <div className="absolute mt-2 w-full">
           {isLoading && searchQuery.length > 0 ? (
-            <SuggestionCard>
-              <ListItem isSkeleton />
-              <ListItem isSkeleton />
-              <ListItem isSkeleton />
-              <ListItem isSkeleton />
-              <ListItem isSkeleton />
-            </SuggestionCard>
+            <SuggestionCardSkeleton />
           ) : (
             !isError &&
             results &&
             results.length > 0 && (
               <SuggestionCard>
                 {results.map((result, i) => (
-                  <ListItem key={i} GeoLocation={result} />
+                  <ListItem
+                    key={i}
+                    GeoLocation={result}
+                    setQueryString={setValue}
+                  />
                 ))}
               </SuggestionCard>
             )
