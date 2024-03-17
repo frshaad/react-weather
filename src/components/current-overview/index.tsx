@@ -20,8 +20,9 @@ export default function CurrentOverview({ locationCoords }: Props) {
   const unit = useAppSelector(selectUnit)
   const parts = locationCoords.split(',')
 
-  const lat = parseInt(parts[0])
-  const lon = parseInt(parts[1])
+  const lat = parseFloat(parts[0])
+  const lon = parseFloat(parts[1])
+
   const {
     data: currentWeahter,
     isLoading,
