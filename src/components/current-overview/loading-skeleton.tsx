@@ -13,10 +13,10 @@ const PrimaryBoxSkeleton = () => (
       <LocateIcon className="mr-2 size-5" />{' '}
       <Skeleton className="h-5 w-80 rounded-md" />
     </div>
-    <p className="flex items-center">
+    <div className="flex items-center">
       <Calendar className="mr-2 size-5" />
       <Skeleton className="h-5 w-96 rounded-md" />
-    </p>
+    </div>
   </div>
 )
 
