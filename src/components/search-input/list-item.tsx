@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { GeoLocation } from '@/types'
 
-type Props = {
+type Props = React.ComponentPropsWithoutRef<'button'> & {
   GeoLocation?: GeoLocation
   isSkeleton?: boolean
 }

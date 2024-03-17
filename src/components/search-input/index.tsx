@@ -13,7 +13,7 @@ export default function SearchInput() {
   const { data: results, isError, isLoading } = useSearchLocation(searchQuery)
 
   return (
-    <div className="flex w-full items-center space-x-2">
+    <div className="z-10 flex w-full items-center space-x-2">
       <div className="relative">
         <Input
           type="text"
@@ -32,7 +32,8 @@ export default function SearchInput() {
             </SuggestionCard>
           ) : (
             !isError &&
-            results && (
+            results &&
+            results.length > 0 && (
               <SuggestionCard>
                 {results.map((result, i) => (
                   <ListItem key={i} GeoLocation={result} />

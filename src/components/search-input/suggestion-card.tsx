@@ -6,7 +6,7 @@ export default function SuggestionCard({
   children: React.ReactNode
 }) {
   return (
-    <Card className="">
+    <Card>
       <ul className="flex flex-col p-0">{children}</ul>
     </Card>
   )
