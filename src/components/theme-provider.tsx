@@ -51,9 +51,9 @@ export function ThemeProvider({
   const value = useMemo(
     () => ({
       theme,
-      setTheme: (mtheme: Theme) => {
-        localStorage.setItem(storageKey, theme);
-        setTheme(mtheme);
+      setTheme: (newTheme: Theme) => {
+        localStorage.setItem(storageKey, newTheme);
+        setTheme(newTheme);
       },
     }),
     [storageKey, theme],
