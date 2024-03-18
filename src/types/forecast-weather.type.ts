@@ -1,73 +1,73 @@
 export type ForecastWeather = {
-  cod: string
-  message: number
-  cnt: number
-  list: List[]
-  city: City
-}
+  cod: string;
+  message: number;
+  cnt: number;
+  list: List[];
+  city: City;
+};
 
 export type City = {
-  id: number
-  name: string
-  coord: Coord
-  country: string
-  population: number
-  timezone: number
-  sunrise: number
-  sunset: number
-}
+  id: number;
+  name: string;
+  coord: Coord;
+  country: string;
+  population: number;
+  timezone: number;
+  sunrise: number;
+  sunset: number;
+};
 
 export type Coord = {
-  lat: number
-  lon: number
-}
+  lat: number;
+  lon: number;
+};
 
 export type List = {
-  dt: number
-  main: Main
-  weather: Weather[]
-  clouds: Clouds
-  wind: Wind
-  visibility: number
-  pop: number
-  rain?: Rain
-  sys: Sys
-  dt_txt: Date
-}
+  dt: number;
+  main: Main;
+  weather: Weather[];
+  clouds: Clouds;
+  wind: Wind;
+  visibility: number;
+  pop: number;
+  rain?: Rain;
+  sys: Sys;
+  dt_txt: Date;
+};
 
 export type Clouds = {
-  all: number
-}
+  all: number;
+};
 
 export type Main = {
-  temp: number
-  feels_like: number
-  temp_min: number
-  temp_max: number
-  pressure: number
-  sea_level: number
-  grnd_level: number
-  humidity: number
-  temp_kf: number
-}
+  temp: number;
+  feels_like: number;
+  temp_min: number;
+  temp_max: number;
+  pressure: number;
+  sea_level: number;
+  grnd_level: number;
+  humidity: number;
+  temp_kf: number;
+};
 
 export type Rain = {
-  '3h': number
-}
+  '3h': number;
+};
 
 export type Sys = {
-  pod: string
-}
+  pod: string;
+};
 
 export type Weather = {
-  id: number
-  main: string
-  description: string
-  icon: string
-}
+  id: number;
+  main: string;
+  description: string;
+  icon: string;
+};
 
 export type Wind = {
-  speed: number
-  deg: number
-  gust: number
-}
+  speed: number;
+  deg: number;
+  gust: number;
+};

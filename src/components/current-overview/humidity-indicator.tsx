@@ -1,20 +1,20 @@
-import { Droplet, Droplets, TreePalm } from 'lucide-react'
+import { Droplet, Droplets, TreePalm } from 'lucide-react';
 
-import { cn } from '@/lib/utils'
+import cn from '@/lib/utils';
 
 type Props = {
-  humididty: number
-}
+  humididty: number;
+};
 
 export default function HumidityIndicator({ humididty }: Props) {
-  let indicator: 'dry' | 'comfort' | 'humid'
+  let indicator: 'dry' | 'comfort' | 'humid';
 
   if (humididty >= 30 && humididty <= 60) {
-    indicator = 'comfort'
+    indicator = 'comfort';
   } else if (humididty < 30) {
-    indicator = 'dry'
+    indicator = 'dry';
   } else {
-    indicator = 'humid'
+    indicator = 'humid';
   }
 
   return (
@@ -43,5 +43,5 @@ export default function HumidityIndicator({ humididty }: Props) {
         )}
       </p>
     </div>
-  )
+  );
 }

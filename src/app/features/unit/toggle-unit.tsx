@@ -1,19 +1,19 @@
-import { DraftingCompass } from 'lucide-react'
+import { DraftingCompass } from 'lucide-react';
 
-import { useAppDispatch, useAppSelector } from '@/app/hooks'
-import { Button } from '@/components/ui/button'
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from '@/components/ui/dropdown-menu';
 
-import { selectUnit, setImperial, setMetric } from './unitSlice'
+import { selectUnit, setImperial, setMetric } from './unitSlice';
 
 export default function UnitToggle() {
-  const currentUnit = useAppSelector(selectUnit)
-  const dispatch = useAppDispatch()
+  const currentUnit = useAppSelector(selectUnit);
+  const dispatch = useAppDispatch();
 
   return (
     <DropdownMenu>
@@ -33,5 +33,5 @@ export default function UnitToggle() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

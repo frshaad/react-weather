@@ -2,20 +2,23 @@ module.exports = {
   root: true,
   env: { browser: true, es2020: true, node: true },
   extends: [
-    'eslint:recommended',
+    'airbnb',
+    'airbnb-typescript',
+    'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
+    'plugin:react/jsx-runtime',
     'plugin:@tanstack/eslint-plugin-query/recommended',
     'plugin:tailwindcss/recommended',
-    'prettier',
+    'plugin:prettier/recommended',
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', '*.config.js', '*.config.ts'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
     ecmaVersion: 'latest',
+    project: './tsconfig.json',
   },
-  plugins: ['react-refresh', 'simple-import-sort'],
+  plugins: ['react-refresh', 'simple-import-sort', 'prettier'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
@@ -26,5 +29,8 @@ module.exports = {
     '@tanstack/query/exhaustive-deps': 'error',
     '@tanstack/query/no-rest-destructuring': 'warn',
     '@tanstack/query/stable-query-client': 'error',
+    'react/require-default-props': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'import/extensions': 'off',
   },
-}
+};

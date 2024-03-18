@@ -1,20 +1,20 @@
 /* eslint-disable react-refresh/only-export-components */
-import './index.css'
+import './index.css';
 
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { lazy, StrictMode, Suspense } from 'react'
-import { createRoot } from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { lazy, StrictMode, Suspense } from 'react';
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import ReduxPersistor from '@/app/redux-persistor'
-import ReduxProvider from '@/app/redux-provider'
-import { ThemeProvider } from '@/components/theme-provider'
+import ReduxPersistor from '@/app/redux-persistor';
+import ReduxProvider from '@/app/redux-provider';
+import { ThemeProvider } from '@/components/theme-provider';
 
-import App from './App'
+import App from './App';
 
-const NotFound = lazy(() => import('@/pages/not-found'))
-const Location = lazy(() => import('@/pages/location'))
+const NotFound = lazy(() => import('@/pages/not-found'));
+const Location = lazy(() => import('@/pages/location'));
 
 const router = createBrowserRouter([
   {
@@ -28,12 +28,12 @@ const router = createBrowserRouter([
       },
     ],
   },
-])
+]);
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
-const rootElement = document.getElementById('root')!
-const root = createRoot(rootElement)
+const rootElement = document.getElementById('root')!;
+const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
@@ -49,5 +49,5 @@ root.render(
         </QueryClientProvider>
       </ReduxPersistor>
     </ReduxProvider>
-  </StrictMode>
-)
+  </StrictMode>,
+);

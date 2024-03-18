@@ -1,11 +1,11 @@
-import { LucideIcon } from 'lucide-react'
+import { LucideIcon } from 'lucide-react';
 
 type Props = {
-  icon: LucideIcon
-  title: string
-  data: string | number
-  children?: React.ReactNode
-}
+  icon: LucideIcon;
+  title: string;
+  data: string | number;
+  children?: React.ReactNode;
+};
 
 export default function ConditionInfo({
   data,
@@ -26,5 +26,5 @@ export default function ConditionInfo({
       </div>
       {!!children && children}
     </div>
-  )
+  );
 }

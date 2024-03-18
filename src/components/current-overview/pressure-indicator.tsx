@@ -1,12 +1,12 @@
-import { categorizePressure } from '@/lib/categorizePressure'
-import { cn } from '@/lib/utils'
+import categorizePressure from '@/lib/categorizePressure';
+import cn from '@/lib/utils';
 
 type Props = {
-  pressure: number
-}
+  pressure: number;
+};
 
 export default function PressureIndicator({ pressure }: Props) {
-  const pressureCategory = categorizePressure(pressure)
+  const pressureCategory = categorizePressure(pressure);
 
   return (
     <p
@@ -20,5 +20,5 @@ export default function PressureIndicator({ pressure }: Props) {
         ? pressureCategory.slice(0, 3)
         : pressureCategory}
     </p>
-  )
+  );
 }

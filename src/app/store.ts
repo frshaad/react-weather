@@ -1,4 +1,4 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   FLUSH,
   PAUSE,
@@ -8,35 +8,35 @@ import {
   PURGE,
   REGISTER,
   REHYDRATE,
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-import locationReducer from './features/locations/locationsSlice'
-import unitReducer from './features/unit/unitSlice'
+import locationReducer from './features/locations/locationsSlice';
+import unitReducer from './features/unit/unitSlice';
 
 const rootPersistConfig = {
   key: 'root',
   storage,
-}
+};
 
 const rootReducer = combineReducers({
   location: locationReducer,
   unit: unitReducer,
-})
+});
 
-const persistedReducer = persistReducer(rootPersistConfig, rootReducer)
+const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-})
+});
 
-export const persistor = persistStore(store)
+export const persistor = persistStore(store);
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

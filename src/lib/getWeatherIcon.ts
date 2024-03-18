@@ -9,38 +9,38 @@ import {
   LucideIcon,
   Snowflake,
   Sun,
-} from 'lucide-react'
+} from 'lucide-react';
 
-export function getWeatherIcon(icon: string): LucideIcon {
+export default function getWeatherIcon(icon: string): LucideIcon {
   switch (icon) {
     case '01d':
-      return Sun
+      return Sun;
 
     case '02d':
-      return CloudSun
+      return CloudSun;
 
     case '03d':
-      return Cloud
+      return Cloud;
 
     case '04d':
-      return Cloudy
+      return Cloudy;
 
     case '09d':
-      return CloudDrizzle
+      return CloudDrizzle;
 
     case '10d':
-      return CloudRain
+      return CloudRain;
 
     case '11d':
-      return CloudLightning
+      return CloudLightning;
 
     case '12d':
-      return Snowflake
+      return Snowflake;
 
     case '50d':
-      return CloudFog
+      return CloudFog;
 
     default:
-      return Sun
+      return Sun;
   }
 }

@@ -1,52 +1,52 @@
-import { CircleGauge, Cloudy, Droplets, Telescope, Wind } from 'lucide-react'
+import { CircleGauge, Cloudy, Droplets, Telescope, Wind } from 'lucide-react';
 
-import { selectUnit } from '@/app/features/unit/unitSlice'
-import { useAppSelector } from '@/app/hooks'
-import { useFetchCurrent } from '@/hooks/useFetchCurrent'
-import { CurrentWeather } from '@/types/current-weather.type'
+import { selectUnit } from '@/app/features/unit/unitSlice';
+import { useAppSelector } from '@/app/hooks';
+import useFetchCurrent from '@/hooks/useFetchCurrent';
+import { CurrentWeather } from '@/types/current-weather.type';
 
-import ConditionInfo from './condition-info'
-import HumidityIndicator from './humidity-indicator'
-import LoadingSkeleton from './loading-skeleton'
-import PressureIndicator from './pressure-indicator'
-import PrimaryConditionInfo from './primary-condition-info'
-import WindDirection from './wind-direction'
+import ConditionInfo from './condition-info';
+import HumidityIndicator from './humidity-indicator';
+import LoadingSkeleton from './loading-skeleton';
+import PressureIndicator from './pressure-indicator';
+import PrimaryConditionInfo from './primary-condition-info';
+import WindDirection from './wind-direction';
 
 type Props = {
-  locationCoords: string
-}
+  locationCoords: string;
+};
 
 export default function CurrentOverview({ locationCoords }: Props) {
-  const unit = useAppSelector(selectUnit)
-  const parts = locationCoords.split(',')
+  const unit = useAppSelector(selectUnit);
+  const parts = locationCoords.split(',');
 
-  const lat = parseFloat(parts[0])
-  const lon = parseFloat(parts[1])
+  const lat = parseFloat(parts[0]);
+  const lon = parseFloat(parts[1]);
 
   const {
     data: currentWeahter,
     isLoading,
     isError,
     error,
-  } = useFetchCurrent(lat, lon)
+  } = useFetchCurrent(lat, lon);
 
-  if (isLoading) return <LoadingSkeleton />
-  if (isError) return <h2>{error.message}</h2>
+  if (isLoading) return <LoadingSkeleton />;
+  if (isError) return <h2>{error.message}</h2>;
 
   const {
     name,
     dt,
     sys: { country },
     weather: [{ description, icon }],
-    main: { feels_like, humidity, pressure, temp },
+    main: { feels_like: feelsLike, humidity, pressure, temp },
     visibility,
     wind: { deg, speed },
-    clouds: { all: cloud_cover },
-  } = currentWeahter as CurrentWeather
+    clouds: { all: cloudCover },
+  } = currentWeahter as CurrentWeather;
 
-  const windSpeed = unit === 'metric' ? speed * 3.6 : speed * 2.23694
+  const windSpeed = unit === 'metric' ? speed * 3.6 : speed * 2.23694;
   const visibilityRange =
-    unit === 'metric' ? visibility / 1000 : visibility / 1609
+    unit === 'metric' ? visibility / 1000 : visibility / 1609;
 
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
@@ -57,7 +57,7 @@ export default function CurrentOverview({ locationCoords }: Props) {
             country,
             dt,
             description,
-            feels_like,
+            feelsLike,
             temp,
             icon,
           }}
@@ -85,7 +85,7 @@ export default function CurrentOverview({ locationCoords }: Props) {
         <ConditionInfo
           title="cloud cover"
           icon={Cloudy}
-          data={`${cloud_cover}%`}
+          data={`${cloudCover}%`}
         />
       </div>
       <div className="sm:row-start-4 md:col-start-3 md:row-start-1">
@@ -101,5 +101,5 @@ export default function CurrentOverview({ locationCoords }: Props) {
         />
       </div>
     </div>
-  )
+  );
 }

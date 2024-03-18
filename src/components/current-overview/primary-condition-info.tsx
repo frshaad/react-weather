@@ -1,33 +1,33 @@
-import { Calendar, LocateIcon } from 'lucide-react'
+import { Calendar, LocateIcon } from 'lucide-react';
 
-import { selectUnit } from '@/app/features/unit/unitSlice'
-import { useAppSelector } from '@/app/hooks'
-import { convertDtToLocalTime } from '@/lib/convertDtToLocalTime'
-import { getWeatherIcon } from '@/lib/getWeatherIcon'
+import { selectUnit } from '@/app/features/unit/unitSlice';
+import { useAppSelector } from '@/app/hooks';
+import convertDtToLocalTime from '@/lib/convertDtToLocalTime';
+import getWeatherIcon from '@/lib/getWeatherIcon';
 
 type Props = {
   data: {
-    name: string
-    country: string
-    dt: number
-    description: string
-    feels_like: number
-    temp: number
-    icon: string
-  }
-}
+    name: string;
+    country: string;
+    dt: number;
+    description: string;
+    feelsLike: number;
+    temp: number;
+    icon: string;
+  };
+};
 
 export default function PrimaryConditionInfo({ data }: Props) {
-  const { country, description, dt, feels_like, icon, name, temp } = data
-  const unit = useAppSelector(selectUnit)
+  const { country, description, dt, feelsLike, icon, name, temp } = data;
+  const unit = useAppSelector(selectUnit);
 
-  const getTempWithUnit = (temp: number) =>
+  const getTempWithUnit = (temperature: number) =>
     unit === 'metric'
-      ? `${temp.toFixed(0)}°C`
-      : `${((temp * 9) / 5 + 32).toFixed(0)}°F`
+      ? `${temperature.toFixed(0)}°C`
+      : `${((temperature * 9) / 5 + 32).toFixed(0)}°F`;
 
-  const local_time = convertDtToLocalTime(dt)
-  const WeatherIcon = getWeatherIcon(icon)
+  const localTime = convertDtToLocalTime(dt);
+  const WeatherIcon = getWeatherIcon(icon);
 
   return (
     <div className="h-full space-y-4 rounded-lg border p-8 shadow-lg backdrop-blur-md transition duration-200 hover:scale-[1.02]">
@@ -38,7 +38,7 @@ export default function PrimaryConditionInfo({ data }: Props) {
       <p className="text-sm">
         Feels like{' '}
         <span className="text-lg font-normal">
-          {getTempWithUnit(feels_like)}
+          {getTempWithUnit(feelsLike)}
         </span>
       </p>
       <p className="text-sm font-semibold capitalize">{description}</p>
@@ -49,8 +49,8 @@ export default function PrimaryConditionInfo({ data }: Props) {
       </p>
       <p className="flex items-center text-sm">
         <Calendar className="mr-2 size-5" />
-        {local_time}
+        {localTime}
       </p>
     </div>
-  )
+  );
 }
