@@ -1,9 +1,8 @@
-import { lazy } from 'react';
 import { Outlet } from 'react-router-dom';
 
-const UnitToggle = lazy(() => import('@/app/features/unit/toggle-unit'));
-const ModeToggle = lazy(() => import('@/components/mode-toggle'));
-const SearchInput = lazy(() => import('@/components/search-input'));
+import UnitToggle from '@/app/features/unit/toggle-unit';
+import ModeToggle from '@/components/mode-toggle';
+import SearchInput from '@/components/search-input';
 
 export default function App() {
   return (
