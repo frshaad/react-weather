@@ -1,21 +1,17 @@
-import { Calendar, LocateIcon } from 'lucide-react';
-
 import { Skeleton } from '@/components/ui/skeleton';
 
 function PrimaryBoxSkeleton() {
   return (
     <div className="h-full space-y-4 rounded-lg border p-8 shadow-lg backdrop-blur-md transition duration-200 hover:scale-[1.02]">
-      <Skeleton className="mb-5 size-24 rounded-full" />
+      <Skeleton className="mb-5 size-32 rounded-full" />
       <Skeleton className="h-10 w-20 rounded-md" />
       <Skeleton className="h-7 w-32 rounded-md" />
       <Skeleton className="h-5 w-20 rounded-md" />
       <div className="w-full border-y" />
       <div className="flex items-center">
-        <LocateIcon className="mr-2 size-5" />{' '}
         <Skeleton className="h-5 w-80 rounded-md" />
       </div>
       <div className="flex items-center">
-        <Calendar className="mr-2 size-5" />
         <Skeleton className="h-5 w-96 rounded-md" />
       </div>
     </div>
