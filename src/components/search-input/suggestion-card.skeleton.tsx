@@ -1,5 +1,6 @@
-import { Skeleton } from '../ui/skeleton';
 import SuggestionCard from './suggestion-card';
+
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function SuggestionCardSkeleton() {
   const randomArray = Array.from({ length: 5 }, () => Math.random());

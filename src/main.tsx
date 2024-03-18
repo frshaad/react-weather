@@ -7,11 +7,11 @@ import { lazy, StrictMode, Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
+import App from './App';
+
 import ReduxPersistor from '@/app/redux-persistor';
 import ReduxProvider from '@/app/redux-provider';
 import { ThemeProvider } from '@/components/theme-provider';
-
-import App from './App';
 
 const NotFound = lazy(() => import('@/pages/not-found'));
 const Location = lazy(() => import('@/pages/location'));
