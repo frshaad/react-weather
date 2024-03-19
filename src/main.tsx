@@ -1,18 +1,21 @@
+/* eslint-disable react-refresh/only-export-components */
 import './index.css';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import { StrictMode } from 'react';
+import { StrictMode, Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import App from './App';
+import LoadingSpinner from './loading-spinner';
 
 import ReduxPersistor from '@/app/redux-persistor';
 import ReduxProvider from '@/app/redux-provider';
 import { ThemeProvider } from '@/components/theme-provider';
-import Location from '@/pages/location';
-import NotFound from '@/pages/not-found';
+
+const NotFound = lazy(() => import('@/pages/not-found'));
+const Location = lazy(() => import('@/pages/location'));
 
 const router = createBrowserRouter([
   {
@@ -39,8 +42,10 @@ root.render(
       <ReduxPersistor>
         <QueryClientProvider client={queryClient}>
           <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-            <RouterProvider router={router} />
-            <ReactQueryDevtools initialIsOpen={false} />
+            <Suspense fallback={<LoadingSpinner />}>
+              <RouterProvider router={router} />
+              <ReactQueryDevtools initialIsOpen={false} />
+            </Suspense>
           </ThemeProvider>
         </QueryClientProvider>
       </ReduxPersistor>
