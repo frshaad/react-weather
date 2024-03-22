@@ -1,4 +1,4 @@
-import { Navigation } from 'lucide-react';
+import { LuNavigation } from 'react-icons/lu';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -37,7 +37,7 @@ export default function GeoLocationButton() {
             type="submit"
             onClick={getLocation}
           >
-            <Navigation size={18} />
+            <LuNavigation size={18} />
           </Button>
         </TooltipTrigger>
         <TooltipContent>

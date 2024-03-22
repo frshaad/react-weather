@@ -1,4 +1,4 @@
-import { DraftingCompass } from 'lucide-react';
+import { RiCompasses2Line } from 'react-icons/ri';
 
 import { selectUnit, setImperial, setMetric } from './unitSlice';
 
@@ -19,7 +19,7 @@ export default function UnitToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" className="capitalize">
-          <DraftingCompass className="mr-2" size={17} />
+          <RiCompasses2Line className="mr-2" size={17} />
           {currentUnit}
           <span className="sr-only">Toggle unit</span>
         </Button>

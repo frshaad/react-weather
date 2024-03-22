@@ -1,46 +1,46 @@
+import { IconType } from 'react-icons/lib';
 import {
-  Cloud,
-  CloudDrizzle,
-  CloudFog,
-  CloudLightning,
-  CloudRain,
-  CloudSun,
-  Cloudy,
-  LucideIcon,
-  Snowflake,
-  Sun,
-} from 'lucide-react';
+  LuCloud,
+  LuCloudDrizzle,
+  LuCloudFog,
+  LuCloudLightning,
+  LuCloudRain,
+  LuCloudSun,
+  LuCloudy,
+  LuSnowflake,
+  LuSun,
+} from 'react-icons/lu';
 
-export default function getWeatherIcon(icon: string): LucideIcon {
+export default function getWeatherIcon(icon: string): IconType {
   switch (icon) {
     case '01d':
-      return Sun;
+      return LuSun;
 
     case '02d':
-      return CloudSun;
+      return LuCloudSun;
 
     case '03d':
-      return Cloud;
+      return LuCloud;
 
     case '04d':
-      return Cloudy;
+      return LuCloudy;
 
     case '09d':
-      return CloudDrizzle;
+      return LuCloudDrizzle;
 
     case '10d':
-      return CloudRain;
+      return LuCloudRain;
 
     case '11d':
-      return CloudLightning;
+      return LuCloudLightning;
 
     case '12d':
-      return Snowflake;
+      return LuSnowflake;
 
     case '50d':
-      return CloudFog;
+      return LuCloudFog;
 
     default:
-      return Sun;
+      return LuSun;
   }
 }

@@ -1,4 +1,4 @@
-import { Calendar, LocateIcon } from 'lucide-react';
+import { LuCalendar, LuLocate } from 'react-icons/lu';
 
 import { selectUnit } from '@/app/features/unit/unitSlice';
 import { useAppSelector } from '@/app/hooks';
@@ -44,11 +44,11 @@ export default function PrimaryConditionInfo({ data }: Props) {
       <p className="text-sm font-semibold capitalize">{description}</p>
       <div className="w-full border-y" />
       <p className="flex items-center text-sm">
-        <LocateIcon className="mr-2 size-5" />{' '}
+        <LuLocate className="mr-2 size-5" />{' '}
         <span className="font-semibold">{name}</span>, {country}
       </p>
       <p className="flex items-center text-sm">
-        <Calendar className="mr-2 size-5" />
+        <LuCalendar className="mr-2 size-5" />
         {localTime}
       </p>
     </div>

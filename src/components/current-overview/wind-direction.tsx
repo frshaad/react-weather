@@ -1,4 +1,4 @@
-import { ArrowDownToDot } from 'lucide-react';
+import { LuArrowDownToDot } from 'react-icons/lu';
 
 type Props = { windDeg: number };
 
@@ -13,7 +13,7 @@ export default function WindDirection({ windDeg }: Props) {
 
   return (
     <div className="w-fit">
-      <ArrowDownToDot style={styles} className="size-10 text-[#2193b0]/70" />
+      <LuArrowDownToDot style={styles} className="size-10 text-[#2193b0]/70" />
     </div>
   );
 }

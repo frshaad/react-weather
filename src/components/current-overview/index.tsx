@@ -1,4 +1,5 @@
-import { CircleGauge, Cloudy, Droplets, Telescope, Wind } from 'lucide-react';
+import { LuGaugeCircle, LuCloudy, LuDroplets, LuWind } from 'react-icons/lu';
+import { IoTelescopeOutline } from 'react-icons/io5';
 
 import ConditionInfo from './condition-info';
 import HumidityIndicator from './humidity-indicator';
@@ -66,7 +67,7 @@ export default function CurrentOverview({ locationCoords }: Props) {
       <div className="sm:row-start-3 md:col-start-2 md:row-start-1">
         <ConditionInfo
           title="wind"
-          icon={Wind}
+          icon={LuWind}
           data={`${windSpeed.toFixed(1)} ${unit === 'metric' ? 'km/h' : 'mph'}`}
         >
           <WindDirection windDeg={deg} />
@@ -75,7 +76,7 @@ export default function CurrentOverview({ locationCoords }: Props) {
       <div className="sm:row-start-3 md:col-start-2 md:row-start-2">
         <ConditionInfo
           title="pressure"
-          icon={CircleGauge}
+          icon={LuGaugeCircle}
           data={`${pressure} hPa`}
         >
           <PressureIndicator pressure={pressure} />
@@ -84,19 +85,19 @@ export default function CurrentOverview({ locationCoords }: Props) {
       <div className="sm:row-start-4 md:col-start-2 md:row-start-3">
         <ConditionInfo
           title="cloud cover"
-          icon={Cloudy}
+          icon={LuCloudy}
           data={`${cloudCover}%`}
         />
       </div>
       <div className="sm:row-start-4 md:col-start-3 md:row-start-1">
-        <ConditionInfo title="humidity" icon={Droplets} data={`${humidity}%`}>
+        <ConditionInfo title="humidity" icon={LuDroplets} data={`${humidity}%`}>
           <HumidityIndicator humididty={humidity} />
         </ConditionInfo>
       </div>
       <div className="sm:row-start-5 md:col-start-3 md:row-start-2">
         <ConditionInfo
           title="visibility"
-          icon={Telescope}
+          icon={IoTelescopeOutline}
           data={`${visibilityRange.toFixed(1)} ${unit === 'metric' ? 'km' : 'miles'}`}
         />
       </div>

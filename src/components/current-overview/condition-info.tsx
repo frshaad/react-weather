@@ -1,7 +1,7 @@
-import { LucideIcon } from 'lucide-react';
+import { IconType } from 'react-icons/lib';
 
 type Props = {
-  icon: LucideIcon;
+  icon: IconType;
   title: string;
   data: string | number;
   children?: React.ReactNode;

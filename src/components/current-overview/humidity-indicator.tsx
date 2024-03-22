@@ -1,4 +1,4 @@
-import { Droplet, Droplets, TreePalm } from 'lucide-react';
+import { LuDroplet, LuDroplets, LuPalmtree } from 'react-icons/lu';
 
 import cn from '@/lib/utils';
 
@@ -28,17 +28,17 @@ export default function HumidityIndicator({ humididty }: Props) {
       <p className="flex items-center gap-2 capitalize">
         {indicator === 'humid' && (
           <>
-            <Droplets className="text-blue-500/70" size={18} /> {indicator}
+            <LuDroplets className="text-blue-500/70" size={18} /> {indicator}
           </>
         )}
         {indicator === 'comfort' && (
           <>
-            <Droplet className="text-green-500/70" size={18} /> {indicator}
+            <LuDroplet className="text-green-500/70" size={18} /> {indicator}
           </>
         )}
         {indicator === 'dry' && (
           <>
-            <TreePalm className="text-orange-500/70" size={18} /> {indicator}
+            <LuPalmtree className="text-orange-500/70" size={18} /> {indicator}
           </>
         )}
       </p>
