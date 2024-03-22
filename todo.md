@@ -1,0 +1,3 @@
+- [x] not-found-svg is too big
+- [ ] replace lucide icons with react-icons
+- [x] remove public/sun.png
