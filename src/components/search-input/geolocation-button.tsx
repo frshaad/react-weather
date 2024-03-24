@@ -1,5 +1,5 @@
-import { LuNavigation } from 'react-icons/lu';
 import { useState } from 'react';
+import { LuNavigation } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';

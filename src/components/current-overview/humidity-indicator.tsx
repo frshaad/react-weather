@@ -1,6 +1,6 @@
 import { LuDroplet, LuDroplets, LuPalmtree } from 'react-icons/lu';
 
-import cn from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 type Props = {
   humididty: number;

@@ -1,5 +1,10 @@
-import { LuGaugeCircle, LuCloudy, LuDroplets, LuWind } from 'react-icons/lu';
 import { IoTelescopeOutline } from 'react-icons/io5';
+import { LuCloudy, LuDroplets, LuGaugeCircle, LuWind } from 'react-icons/lu';
+
+import { selectUnit } from '@/app/features/unit/unitSlice';
+import { useAppSelector } from '@/app/hooks';
+import useFetchCurrent from '@/hooks/useFetchCurrent';
+import { CurrentWeather } from '@/types/current-weather.type';
 
 import ConditionInfo from './condition-info';
 import HumidityIndicator from './humidity-indicator';
@@ -7,11 +12,6 @@ import LoadingSkeleton from './loading-skeleton';
 import PressureIndicator from './pressure-indicator';
 import PrimaryConditionInfo from './primary-condition-info';
 import WindDirection from './wind-direction';
-
-import { CurrentWeather } from '@/types/current-weather.type';
-import useFetchCurrent from '@/hooks/useFetchCurrent';
-import { useAppSelector } from '@/app/hooks';
-import { selectUnit } from '@/app/features/unit/unitSlice';
 
 type Props = {
   locationCoords: string;

@@ -2,8 +2,7 @@ import { LuCalendar, LuLocate } from 'react-icons/lu';
 
 import { selectUnit } from '@/app/features/unit/unitSlice';
 import { useAppSelector } from '@/app/hooks';
-import convertDtToLocalTime from '@/lib/convertDtToLocalTime';
-import getWeatherIcon from '@/lib/getWeatherIcon';
+import { convertDtToLocalTime, getWeatherIcon } from '@/lib/utils';
 
 type Props = {
   data: {

@@ -1,5 +1,4 @@
-import categorizePressure from '@/lib/categorizePressure';
-import cn from '@/lib/utils';
+import { categorizePressure, cn } from '@/lib/utils';
 
 type Props = {
   pressure: number;

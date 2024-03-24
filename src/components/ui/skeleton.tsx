@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import cn from '@/lib/utils';
+import { cn } from '@/lib/utils';
 
 function Skeleton({
   className,

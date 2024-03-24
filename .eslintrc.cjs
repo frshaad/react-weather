@@ -17,26 +17,14 @@ module.exports = {
     ecmaVersion: 'latest',
     project: './tsconfig.json',
   },
-  plugins: ['react-refresh', 'import', 'prettier'],
+  plugins: ['react-refresh', 'simple-import-sort', 'prettier'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
-    'import/order': [
-      'error',
-      {
-        groups: [
-          'builtin',
-          'external',
-          'internal',
-          'index',
-          'sibling',
-          'parent',
-        ],
-        'newlines-between': 'always',
-      },
-    ],
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
     '@tanstack/query/exhaustive-deps': 'error',
     '@tanstack/query/no-rest-destructuring': 'warn',
     '@tanstack/query/stable-query-client': 'error',

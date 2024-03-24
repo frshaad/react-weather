@@ -1,7 +1,5 @@
 import { RiCompasses2Line } from 'react-icons/ri';
 
-import { selectUnit, setImperial, setMetric } from './unitSlice';
-
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { Button } from '@/components/ui/button';
 import {
@@ -10,6 +8,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+
+import { selectUnit, setImperial, setMetric } from './unitSlice';
 
 export default function UnitToggle() {
   const currentUnit = useAppSelector(selectUnit);
