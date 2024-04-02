@@ -15,7 +15,7 @@ export default function Location() {
   }
 
   return (
-    <section>
+    <section className="space-y-12">
       <CurrentOverview locationCoords={locationCoords} />
       <ForecastOverview locationCoords={locationCoords} />
     </section>
