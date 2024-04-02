@@ -4,6 +4,7 @@ import { LuCloudy, LuDroplets, LuGaugeCircle, LuWind } from 'react-icons/lu';
 import { selectUnit } from '@/app/features/unit/unitSlice';
 import { useAppSelector } from '@/app/hooks';
 import useFetchCurrent from '@/hooks/useFetchCurrent';
+import { getCoordsFromCoordsString } from '@/lib/utils';
 import { CurrentWeather } from '@/types/current-weather.type';
 
 import ConditionInfo from './condition-info';
@@ -19,10 +20,7 @@ type Props = {
 
 export default function CurrentOverview({ locationCoords }: Props) {
   const unit = useAppSelector(selectUnit);
-  const parts = locationCoords.split(',');
-
-  const lat = parseFloat(parts[0]);
-  const lon = parseFloat(parts[1]);
+  const { lat, lon } = getCoordsFromCoordsString(locationCoords);
 
   const {
     data: currentWeahter,
