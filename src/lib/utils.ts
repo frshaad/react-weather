@@ -74,3 +74,12 @@ export function getWeatherIcon(icon: string): IconType {
       return LuSun;
   }
 }
+
+export function getCoordsFromCoordsString(locationCoords: string) {
+  const parts = locationCoords.split(',');
+
+  const lat = parseFloat(parts[0]);
+  const lon = parseFloat(parts[1]);
+
+  return { lat, lon };
+}
