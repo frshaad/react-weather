@@ -10,12 +10,12 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import ReduxPersistor from '@/app/redux-persistor';
 import ReduxProvider from '@/app/redux-provider';
 import { ThemeProvider } from '@/components/theme-provider';
+import Location from '@/pages/location';
 
 import App from './App';
 import LoadingSpinner from './loading-spinner';
 
 const NotFound = lazy(() => import('@/pages/not-found'));
-const Location = lazy(() => import('@/pages/location'));
 
 const router = createBrowserRouter([
   {
