@@ -1,3 +1,4 @@
+import { HiOutlineCalendarDays } from 'react-icons/hi2';
 import { useParams } from 'react-router-dom';
 
 import LoadingSkeleton from '@/components/current-overview/loading-skeleton';
@@ -26,7 +27,10 @@ export default function ForecastOverview() {
 
   return (
     <div className="space-y-5">
-      <h2 className="text-xl font-medium">Next 5 Days</h2>
+      <h2 className="flex items-center gap-2 text-xl font-medium">
+        <HiOutlineCalendarDays size={22} />
+        Next 5 Days
+      </h2>
 
       <div>
         <DateTabs listOfDays={list} />
