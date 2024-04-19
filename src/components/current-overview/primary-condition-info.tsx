@@ -1,7 +1,5 @@
 import { LuCalendar, LuLocate } from 'react-icons/lu';
 
-import { selectUnit } from '@/app/features/unit/unitSlice';
-import { useAppSelector } from '@/app/hooks';
 import { convertDtToLocalTime, getWeatherIcon } from '@/lib/utils';
 
 type Props = {
@@ -18,12 +16,10 @@ type Props = {
 
 export default function PrimaryConditionInfo({ data }: Props) {
   const { country, description, dt, feelsLike, icon, name, temp } = data;
-  const unit = useAppSelector(selectUnit);
 
-  const getTempWithUnit = (temperature: number) =>
-    unit === 'metric'
-      ? `${temperature.toFixed(0)}°C`
-      : `${((temperature * 9) / 5 + 32).toFixed(0)}°F`;
+  const getTempWithUnit = (temperature: number) => {
+    return `${temperature.toFixed(0)}°C`;
+  };
 
   const localTime = convertDtToLocalTime(dt);
   const WeatherIcon = getWeatherIcon(icon);

@@ -1,10 +1,10 @@
 import { IoTelescopeOutline } from 'react-icons/io5';
 import { LuCloudy, LuDroplets, LuGaugeCircle, LuWind } from 'react-icons/lu';
+import { useParams } from 'react-router-dom';
 
-import { selectUnit } from '@/app/features/unit/unitSlice';
-import { useAppSelector } from '@/app/hooks';
 import useFetchCurrent from '@/hooks/useFetchCurrent';
 import { getCoordsFromCoordsString } from '@/lib/utils';
+import { LocationParam } from '@/types';
 import { CurrentWeather } from '@/types/current-weather.type';
 
 import ConditionInfo from './condition-info';
@@ -14,13 +14,9 @@ import PressureIndicator from './pressure-indicator';
 import PrimaryConditionInfo from './primary-condition-info';
 import WindDirection from './wind-direction';
 
-type Props = {
-  locationCoords: string;
-};
-
-export default function CurrentOverview({ locationCoords }: Props) {
-  const unit = useAppSelector(selectUnit);
-  const { lat, lon } = getCoordsFromCoordsString(locationCoords);
+export default function CurrentOverview() {
+  const { locationCoords } = useParams<LocationParam>();
+  const { lat, lon } = getCoordsFromCoordsString(locationCoords as string);
 
   const {
     data: currentWeahter,
@@ -43,9 +39,8 @@ export default function CurrentOverview({ locationCoords }: Props) {
     clouds: { all: cloudCover },
   } = currentWeahter as CurrentWeather;
 
-  const windSpeed = unit === 'metric' ? speed * 3.6 : speed * 2.23694;
-  const visibilityRange =
-    unit === 'metric' ? visibility / 1000 : visibility / 1609;
+  const windSpeed = speed * 3.6;
+  const visibilityRange = visibility / 1000;
 
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3">
@@ -66,7 +61,7 @@ export default function CurrentOverview({ locationCoords }: Props) {
         <ConditionInfo
           title="wind"
           icon={LuWind}
-          data={`${windSpeed.toFixed(1)} ${unit === 'metric' ? 'km/h' : 'mph'}`}
+          data={`${windSpeed.toFixed(1)} km/h`}
         >
           <WindDirection windDeg={deg} />
         </ConditionInfo>
@@ -96,7 +91,7 @@ export default function CurrentOverview({ locationCoords }: Props) {
         <ConditionInfo
           title="visibility"
           icon={IoTelescopeOutline}
-          data={`${visibilityRange.toFixed(1)} ${unit === 'metric' ? 'km' : 'miles'}`}
+          data={`${visibilityRange.toFixed(1)} km`}
         />
       </div>
     </div>

@@ -2,10 +2,7 @@ import { useParams } from 'react-router-dom';
 
 import CurrentOverview from '@/components/current-overview';
 import ForecastOverview from '@/components/forecast-overview';
-
-type LocationParam = {
-  locationCoords: string;
-};
+import { LocationParam } from '@/types';
 
 export default function Location() {
   const { locationCoords } = useParams<LocationParam>();
@@ -16,8 +13,8 @@ export default function Location() {
 
   return (
     <section className="space-y-12">
-      <CurrentOverview locationCoords={locationCoords} />
-      <ForecastOverview locationCoords={locationCoords} />
+      <CurrentOverview />
+      <ForecastOverview />
     </section>
   );
 }

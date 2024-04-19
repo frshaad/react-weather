@@ -12,7 +12,6 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import locationReducer from './features/locations/locationsSlice';
-import unitReducer from './features/unit/unitSlice';
 
 const rootPersistConfig = {
   key: 'root',
@@ -21,7 +20,6 @@ const rootPersistConfig = {
 
 const rootReducer = combineReducers({
   location: locationReducer,
-  unit: unitReducer,
 });
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer);
