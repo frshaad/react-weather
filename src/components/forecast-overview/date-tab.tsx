@@ -13,7 +13,7 @@ export default function DateTab({
   return (
     <li>
       <Button
-        variant="ghost"
+        variant="outline"
         className={cn({
           'bg-sky-100 text-sky-600 hover:bg-sky-100 hover:text-sky-600':
             selected,

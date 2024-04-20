@@ -19,7 +19,7 @@ export default function ForecastSection({ listOfDays }: Props) {
   const tomorrow = getDate('tomorrow');
 
   return (
-    <div>
+    <div className="mb-2 space-y-4">
       <ul className="flex items-center gap-2">
         {forecastDataGroupedByDate.map((day) => {
           let date: string;

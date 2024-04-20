@@ -126,3 +126,15 @@ export function formatDate(formattedDate: string): string {
 
   return `${month} ${day}`;
 }
+
+export function getHHMMFromTimestamp(timestamp: number): string {
+  const date = new Date(timestamp * 1000); // Convert to milliseconds
+  const hours = date.getHours().toString().padStart(2, '0');
+  const minutes = date.getMinutes().toString().padStart(2, '0');
+
+  return `${hours}:${minutes}`;
+}
+
+export function getTempWithUnit(temperature: number) {
+  return `${temperature.toFixed(0)}°C`;
+}
