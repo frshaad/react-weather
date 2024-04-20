@@ -7,7 +7,7 @@ import { getCoordsFromCoordsString } from '@/lib/utils';
 import { LocationParam } from '@/types';
 import { ForecastWeather } from '@/types/forecast-weather.type';
 
-import DateTabs from './date-tabs';
+import ForecastSection from './forecast-section';
 
 export default function ForecastOverview() {
   const { locationCoords } = useParams<LocationParam>();
@@ -26,15 +26,13 @@ export default function ForecastOverview() {
   const { list } = forecastWeahter as ForecastWeather;
 
   return (
-    <div className="space-y-5">
+    <section className="space-y-5">
       <h2 className="flex items-center gap-2 text-xl font-medium">
         <HiOutlineCalendarDays size={22} />
         Next 5 Days
       </h2>
 
-      <div>
-        <DateTabs listOfDays={list} />
-      </div>
-    </div>
+      <ForecastSection listOfDays={list} />
+    </section>
   );
 }
