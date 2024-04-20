@@ -1,13 +1,13 @@
 import { HiOutlineCalendarDays } from 'react-icons/hi2';
 import { useParams } from 'react-router-dom';
 
-import LoadingSkeleton from '@/components/current-overview/loading-skeleton';
 import useFetchForecast from '@/hooks/useFetchForecast';
 import { getCoordsFromCoordsString } from '@/lib/utils';
 import { LocationParam } from '@/types';
 import { ForecastWeather } from '@/types/forecast-weather.type';
 
 import ForecastSection from './forecast-section';
+import LoadingSkeleton from './loading-skeleton';
 
 export default function ForecastOverview() {
   const { locationCoords } = useParams<LocationParam>();
