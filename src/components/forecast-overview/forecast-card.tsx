@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
+import { CarouselItem } from '@/components/ui/carousel';
 import {
   getHHMMFromTimestamp,
   getTempWithUnit,
@@ -26,24 +27,26 @@ export default function ForecastCard({ data }: Props) {
   const temp = getTempWithUnit(data.main.temp);
 
   return (
-    <Card className="text-center">
-      <CardHeader>
-        <CardTitle>{time}</CardTitle>
-        <CardDescription>{data.weather[0].main}</CardDescription>
-      </CardHeader>
-      <CardContent className="relative mb-6 flex flex-col items-center">
-        <p className="z-10 text-4xl font-medium text-[#2193b0]">{temp}</p>
-        <WeatherIcon
-          size={40}
-          className="absolute bottom-0 text-[#2193b0]/20"
-        />
-      </CardContent>
-      <CardFooter>
-        <p className="flex items-center gap-2 text-sm">
-          <LuWind size={18} />
-          {`${windSpeed.toFixed(0)} km/h`}
-        </p>
-      </CardFooter>
-    </Card>
+    <CarouselItem className="basis-1/5">
+      <Card className="text-center">
+        <CardHeader>
+          <CardTitle>{time}</CardTitle>
+          <CardDescription>{data.weather[0].main}</CardDescription>
+        </CardHeader>
+        <CardContent className="relative mb-6 flex flex-col items-center">
+          <p className="z-10 text-4xl font-medium text-[#2193b0]">{temp}</p>
+          <WeatherIcon
+            size={40}
+            className="absolute bottom-0 text-[#2193b0]/20"
+          />
+        </CardContent>
+        <CardFooter className="">
+          <p className="flex w-full items-center justify-center gap-2 text-sm">
+            <LuWind size={18} />
+            {`${windSpeed.toFixed(0)} km/h`}
+          </p>
+        </CardFooter>
+      </Card>
+    </CarouselItem>
   );
 }

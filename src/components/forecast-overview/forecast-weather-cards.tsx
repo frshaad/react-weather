@@ -1,3 +1,9 @@
+import {
+  Carousel,
+  CarouselContent,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 import { List } from '@/types/forecast-weather.type';
 
 import ForecastCard from './forecast-card';
@@ -16,8 +22,12 @@ export default function ForecastWeatherCards({
   )?.[1];
 
   return (
-    <div className="flex items-center gap-6 overflow-scroll overflow-y-hidden">
-      {weatherData?.map((data) => <ForecastCard key={data.dt} data={data} />)}
-    </div>
+    <Carousel>
+      <CarouselContent>
+        {weatherData?.map((data) => <ForecastCard key={data.dt} data={data} />)}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
   );
 }
