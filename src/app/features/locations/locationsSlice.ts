@@ -2,10 +2,11 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import { Coords, GeoLocation } from '@/types';
+import { RootState } from '@/app/store';
+import type { Coords } from '@/types';
 
 export type LocationsSlice = {
-  locations: GeoLocation[];
+  locations: Coords[];
 };
 
 const initialState: LocationsSlice = {
@@ -16,7 +17,7 @@ export const locationsSlice = createSlice({
   name: 'counter',
   initialState,
   reducers: {
-    addLocation: (state, action: PayloadAction<GeoLocation>) => {
+    addLocation: (state, action: PayloadAction<Coords>) => {
       const existingLocation = state.locations.find(
         (loc) =>
           loc.lat === action.payload.lat && loc.lon === action.payload.lon,
@@ -42,5 +43,8 @@ export const locationsSlice = createSlice({
   },
 });
 
-export const { addLocation } = locationsSlice.actions;
+export const selectAllLocations = (state: RootState) =>
+  state.location.locations;
+export const { addLocation, removeLocation, clearAllLocations } =
+  locationsSlice.actions;
 export default locationsSlice.reducer;
