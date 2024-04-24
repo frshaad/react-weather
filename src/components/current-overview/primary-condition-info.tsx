@@ -1,5 +1,6 @@
 import { LuCalendar, LuLocate } from 'react-icons/lu';
 
+import ToggleSaveLocation from '@/app/features/locations/toggle-save-location';
 import {
   convertDtToLocalTime,
   getTempWithUnit,
@@ -15,17 +16,30 @@ type Props = {
     feelsLike: number;
     temp: number;
     icon: string;
+    locationLat: number;
+    locationLon: number;
   };
 };
 
 export default function PrimaryConditionInfo({ data }: Props) {
-  const { country, description, dt, feelsLike, icon, name, temp } = data;
+  const {
+    country,
+    description,
+    dt,
+    feelsLike,
+    icon,
+    name,
+    temp,
+    locationLat,
+    locationLon,
+  } = data;
 
   const localTime = convertDtToLocalTime(dt);
   const WeatherIcon = getWeatherIcon(icon);
 
   return (
-    <div className="h-full space-y-4 rounded-lg border p-8 shadow-lg backdrop-blur-md transition duration-200 hover:scale-[1.02]">
+    <div className="relative h-full space-y-4 rounded-lg border p-8 shadow-lg backdrop-blur-md transition duration-200 hover:scale-[1.02]">
+      <ToggleSaveLocation lat={locationLat} lon={locationLon} />
       <WeatherIcon className="mb-2 size-32 text-[#2193b0]" />
       <p className="inline-block bg-gradient-to-bl from-[#6dd5ed] to-[#2193b0] bg-clip-text text-4xl font-bold text-transparent">
         {getTempWithUnit(temp)}

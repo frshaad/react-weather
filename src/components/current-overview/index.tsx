@@ -37,6 +37,7 @@ export default function CurrentOverview() {
     visibility,
     wind: { deg, speed },
     clouds: { all: cloudCover },
+    coord: { lat: locationLat, lon: locationLon },
   } = currentWeahter as CurrentWeather;
 
   const windSpeed = speed * 3.6;
@@ -54,6 +55,8 @@ export default function CurrentOverview() {
             feelsLike,
             temp,
             icon,
+            locationLat,
+            locationLon,
           }}
         />
       </div>
