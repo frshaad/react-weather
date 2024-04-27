@@ -1,4 +1,5 @@
 import { Map } from 'lucide-react';
+import { useState } from 'react';
 
 import { selectAllLocations } from '@/app/features/locations/locationsSlice';
 import { useAppSelector } from '@/app/hooks';
@@ -16,9 +17,10 @@ import LocationCard from './location-card';
 
 export default function SavedLocationsButton() {
   const savedLocations = useAppSelector(selectAllLocations);
+  const [sheetOpen, setSheetOpen] = useState(false);
 
   return (
-    <Sheet>
+    <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
       <SheetTrigger className="flex items-center gap-2">
         <Button variant="secondary" asChild>
           <div>
@@ -37,7 +39,11 @@ export default function SavedLocationsButton() {
         <Separator className="my-6" />
         <div className="flex flex-col space-y-3">
           {savedLocations.map((location) => (
-            <LocationCard key={location.lat + location.lon} {...location} />
+            <LocationCard
+              key={location.lat + location.lon}
+              {...location}
+              setOpen={setSheetOpen}
+            />
           ))}
         </div>
       </SheetContent>

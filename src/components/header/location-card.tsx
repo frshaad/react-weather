@@ -12,14 +12,19 @@ import { getWeatherIcon } from '@/lib/utils';
 import type { SavedLocationObject } from '@/types';
 import { CurrentWeather } from '@/types/current-weather.type';
 
-import LoadingSkeleton from '../current-overview/loading-skeleton';
+import LocationCardSkeleton from './location-card.skeleton';
+
+type Props = SavedLocationObject & {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export default function LocationCard({
   lat,
   country,
   lon,
   name,
-}: SavedLocationObject) {
+  setOpen,
+}: Props) {
   const {
     data: currentWeahter,
     isLoading,
@@ -27,7 +32,7 @@ export default function LocationCard({
     error,
   } = useFetchCurrent(lat, lon);
 
-  if (isLoading) return <LoadingSkeleton />;
+  if (isLoading) return <LocationCardSkeleton />;
   if (isError) return <h2>{error.message}</h2>;
 
   const {
@@ -38,7 +43,7 @@ export default function LocationCard({
   const WeatherIcon = getWeatherIcon(icon);
 
   return (
-    <Link to={`/${lat},${lon}`}>
+    <Link to={`/${lat},${lon}`} onClick={() => setOpen(false)}>
       <Card className="flex w-[350px] items-center justify-between transition duration-200 hover:shadow-lg">
         <CardHeader>
           <CardTitle>
