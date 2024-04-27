@@ -64,7 +64,7 @@ export default function CurrentOverview() {
         <ConditionInfo
           title="wind"
           icon={LuWind}
-          data={`${windSpeed.toFixed(1)} km/h`}
+          data={`${windSpeed.toFixed(0)} km/h`}
         >
           <WindDirection windDeg={deg} />
         </ConditionInfo>
