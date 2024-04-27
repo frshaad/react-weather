@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 
 import ModeToggle from '@/components/mode-toggle';
 import SearchInput from '@/components/search-input';
+import { Toaster } from '@/components/ui/sonner';
 
 export default function App() {
   const navigate = useNavigate();
@@ -12,12 +13,15 @@ export default function App() {
   }, [navigate]);
 
   return (
-    <div className="container max-w-5xl space-y-5 pt-5">
-      <div className="flex">
-        <SearchInput />
-        <ModeToggle />
-      </div>
-      <Outlet />
-    </div>
+    <>
+      <main className="container max-w-5xl space-y-5 pt-5">
+        <div className="flex">
+          <SearchInput />
+          <ModeToggle />
+        </div>
+        <Outlet />
+      </main>
+      <Toaster />
+    </>
   );
 }

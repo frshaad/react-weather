@@ -1,4 +1,5 @@
 import { CircleMinus, CirclePlus } from 'lucide-react';
+import { toast } from 'sonner';
 
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import {
@@ -33,13 +34,21 @@ export default function ToggleSaveLocation({
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger
-            onClick={() =>
-              dispatch(removeLocation({ lat, lon, country, name }))
-            }
+            onClick={() => {
+              dispatch(removeLocation({ lat, lon, country, name }));
+              toast.error(
+                `${name}, ${country} has been removed from your saved locations.`,
+                {
+                  action: {
+                    label: 'Undo',
+                    onClick: () => addLocation({ lat, lon, country, name }),
+                  },
+                },
+              );
+            }}
             className="absolute right-6 top-6"
           >
             <CircleMinus className="text-destructive" />
-            {/* <CircleCheck className="text-green-500" /> */}
           </TooltipTrigger>
           <TooltipContent>
             <p className="text-destructive">Remove Location</p>
@@ -53,7 +62,18 @@ export default function ToggleSaveLocation({
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger
-          onClick={() => dispatch(addLocation({ lat, lon, country, name }))}
+          onClick={() => {
+            dispatch(addLocation({ lat, lon, country, name }));
+            toast.success(
+              `${name}, ${country} has been added to your saved locations.`,
+              {
+                action: {
+                  label: 'Undo',
+                  onClick: () => removeLocation({ lat, lon, country, name }),
+                },
+              },
+            );
+          }}
           className="absolute right-6 top-6 z-20"
         >
           <CirclePlus className="text-blue-500" />
