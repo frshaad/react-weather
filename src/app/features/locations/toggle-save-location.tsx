@@ -41,7 +41,8 @@ export default function ToggleSaveLocation({
                 {
                   action: {
                     label: 'Undo',
-                    onClick: () => addLocation({ lat, lon, country, name }),
+                    onClick: () =>
+                      dispatch(addLocation({ lat, lon, country, name })),
                   },
                 },
               );
@@ -69,7 +70,8 @@ export default function ToggleSaveLocation({
               {
                 action: {
                   label: 'Undo',
-                  onClick: () => removeLocation({ lat, lon, country, name }),
+                  onClick: () =>
+                    dispatch(removeLocation({ lat, lon, country, name })),
                 },
               },
             );
