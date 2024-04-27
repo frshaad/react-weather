@@ -17,7 +17,7 @@ export default function App() {
         <Header />
         <Outlet />
       </main>
-      <Toaster />
+      <Toaster position="bottom-center" />
     </>
   );
 }
