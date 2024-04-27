@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 
-import ModeToggle from '@/components/mode-toggle';
-import SearchInput from '@/components/search-input';
+import Header from '@/components/header';
 import { Toaster } from '@/components/ui/sonner';
 
 export default function App() {
@@ -15,10 +14,7 @@ export default function App() {
   return (
     <>
       <main className="container max-w-5xl space-y-5 pt-5">
-        <div className="flex">
-          <SearchInput />
-          <ModeToggle />
-        </div>
+        <Header />
         <Outlet />
       </main>
       <Toaster />
