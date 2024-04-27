@@ -15,3 +15,5 @@ export type Coords = {
 export type LocationParam = {
   locationCoords: string;
 };
+
+export type SavedLocationObject = Coords & { name: string; country: string };

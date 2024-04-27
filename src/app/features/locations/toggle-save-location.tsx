@@ -1,14 +1,13 @@
-import { CircleCheck, CircleMinus, CirclePlus } from 'lucide-react';
-import { useState } from 'react';
+import { CircleMinus, CirclePlus } from 'lucide-react';
 
-import { useAppSelector } from '@/app/hooks';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import type { Coords } from '@/types';
+import type { SavedLocationObject } from '@/types';
 
 import {
   addLocation,
@@ -16,43 +15,45 @@ import {
   selectAllLocations,
 } from './locationsSlice';
 
-type Props = Coords;
-
-export default function ToggleSaveLocation({ lat, lon }: Props) {
-  const [isButtonHovered, setIsButtonHovered] = useState(false);
+export default function ToggleSaveLocation({
+  lat,
+  lon,
+  country,
+  name,
+}: SavedLocationObject) {
+  const dispatch = useAppDispatch();
   const savedLocations = useAppSelector(selectAllLocations);
   const isLocationSaved =
     savedLocations.filter(
-      (location) => location.lat === lat && location.lon === lon,
+      (location) => location.country === country && location.name === name,
     ).length > 0;
 
   if (isLocationSaved) {
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger
-          onMouseEnter={() => setIsButtonHovered((prev) => !prev)}
-          onMouseLeave={() => setIsButtonHovered((prev) => !prev)}
-          onClick={() => removeLocation({ lat, lon })}
-          className="absolute right-6 top-6"
-        >
-          {isButtonHovered ? (
-            <CircleMinus className="text-red-500" />
-          ) : (
-            <CircleCheck className="text-green-500" />
-          )}
-        </TooltipTrigger>
-        <TooltipContent>
-          <p className="text-destructive">Remove Location</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>;
+    return (
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger
+            onClick={() =>
+              dispatch(removeLocation({ lat, lon, country, name }))
+            }
+            className="absolute right-6 top-6"
+          >
+            <CircleMinus className="text-destructive" />
+            {/* <CircleCheck className="text-green-500" /> */}
+          </TooltipTrigger>
+          <TooltipContent>
+            <p className="text-destructive">Remove Location</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    );
   }
 
   return (
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger
-          onClick={() => addLocation({ lat, lon })}
+          onClick={() => dispatch(addLocation({ lat, lon, country, name }))}
           className="absolute right-6 top-6 z-20"
         >
           <CirclePlus className="text-blue-500" />
