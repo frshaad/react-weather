@@ -41,7 +41,7 @@ root.render(
     <ReduxProvider>
       <ReduxPersistor>
         <QueryClientProvider client={queryClient}>
-          <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
             <Suspense fallback={<LoadingSpinner />}>
               <RouterProvider router={router} />
               <ReactQueryDevtools initialIsOpen={false} />
