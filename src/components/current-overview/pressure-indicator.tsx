@@ -9,7 +9,7 @@ export default function PressureIndicator({ pressure }: Props) {
 
   return (
     <p
-      className={cn('capitalize font-bold text-md', {
+      className={cn('capitalize font-bold hidden lg:block text-md', {
         'text-destructive/70': pressureCategory === 'high',
         'text-yellow-500/70': pressureCategory === 'moderate',
         'text-green-600/70': pressureCategory === 'low',

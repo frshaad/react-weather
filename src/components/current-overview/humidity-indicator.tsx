@@ -19,7 +19,7 @@ export default function HumidityIndicator({ humididty }: Props) {
 
   return (
     <div
-      className={cn('capitalize font-bold text-md', {
+      className={cn('capitalize font-bold hidden lg:block text-md', {
         'text-blue-500/70': indicator === 'humid',
         'text-green-500/70': indicator === 'comfort',
         'text-orange-400/70': indicator === 'dry',

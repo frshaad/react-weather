@@ -12,7 +12,7 @@ export default function WindDirection({ windDeg }: Props) {
   };
 
   return (
-    <div className="w-fit">
+    <div className="hidden w-fit lg:block">
       <LuArrowDownToDot style={styles} className="size-10 text-[#2193b0]/70" />
     </div>
   );

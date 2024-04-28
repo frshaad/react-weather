@@ -14,9 +14,9 @@ export default function ConditionInfo({
   children,
 }: Props) {
   return (
-    <div className="flex h-full cursor-default select-none items-center gap-10 rounded-lg border p-5 transition duration-200 hover:scale-[1.02] hover:shadow-md">
+    <div className="flex h-full cursor-default select-none items-center gap-10 rounded-lg border p-5 transition duration-200 hover:scale-[1.02] hover:shadow-md max-lg:justify-between">
       <Icon className="size-10 text-[#2193b0]/70" />
-      <div className="space-y-2">
+      <div className="flex flex-col items-end space-y-2">
         <p className="text-base font-semibold capitalize text-secondary-foreground/70">
           {title}
         </p>
