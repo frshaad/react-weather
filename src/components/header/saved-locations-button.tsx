@@ -22,8 +22,8 @@ export default function SavedLocationsButton() {
     <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
       <SheetTrigger className="flex items-center gap-2" asChild>
         <Button variant="secondary">
-          <Map className="mr-2 size-4" size={24} />
-          <span className="text-sm">Saved Locations</span>
+          <Map className="size-4 sm:mr-2" size={24} />
+          <span className="hidden text-sm sm:block">Saved Locations</span>
         </Button>
       </SheetTrigger>
       <SheetContent className="w-[400px] overflow-x-hidden overflow-y-scroll sm:w-[640px]">
