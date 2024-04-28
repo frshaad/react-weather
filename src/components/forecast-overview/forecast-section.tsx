@@ -20,7 +20,7 @@ export default function ForecastSection({ listOfDays }: Props) {
 
   return (
     <div className="mb-2 space-y-4">
-      <ul className="flex items-center gap-2">
+      <ul className="no-scrollbar flex items-center gap-1 overflow-x-scroll sm:gap-2 ">
         {forecastDataGroupedByDate.map((day) => {
           let date: string;
           if (day[0] === today) {

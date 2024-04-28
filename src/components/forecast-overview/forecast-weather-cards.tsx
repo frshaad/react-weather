@@ -22,8 +22,13 @@ export default function ForecastWeatherCards({
   )?.[1];
 
   return (
-    <Carousel>
-      <CarouselContent>
+    <Carousel
+      opts={{
+        align: 'start',
+      }}
+      className="mx-auto w-10/12"
+    >
+      <CarouselContent className="-ml-2 md:-ml-4">
         {weatherData?.map((data) => <ForecastCard key={data.dt} data={data} />)}
       </CarouselContent>
       <CarouselPrevious />
