@@ -1,4 +1,4 @@
-import { HiOutlineCalendarDays } from 'react-icons/hi2';
+import { Calendar } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 
 import useFetchForecast from '@/hooks/useFetchForecast';
@@ -28,7 +28,7 @@ export default function ForecastOverview() {
   return (
     <section className="space-y-5">
       <h2 className="flex items-center gap-2 text-xl font-medium">
-        <HiOutlineCalendarDays size={22} />
+        <Calendar />
         Next 5 Days
       </h2>
 
