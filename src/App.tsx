@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <>
-      <main className="container max-w-5xl space-y-5 pt-5">
+      <main className="container max-w-5xl space-y-5 py-5">
         <Header />
         <Outlet />
       </main>
