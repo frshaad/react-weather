@@ -42,7 +42,7 @@ export default function ForecastCard({ data }: Props) {
         </CardContent>
         <CardFooter className="">
           <p className="flex w-full items-center justify-center gap-2 text-sm">
-            <LuWind size={18} />
+            <LuWind />
             {`${windSpeed.toFixed(0)} km/h`}
           </p>
         </CardFooter>
