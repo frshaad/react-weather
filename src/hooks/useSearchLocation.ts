@@ -9,7 +9,7 @@ const API_KEY = import.meta.env.VITE_OPENWEATHERMAP_API_KEY as string;
 const useSearchLocation = (query: string) => {
   const fetchGeolocation = async (searchTerm: string) => {
     const { data } = await axios.get(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${searchTerm}&limit=${RESULT_LIMIT}&appid=${API_KEY}`,
+      `https://api.openweathermap.org/geo/1.0/direct?q=${searchTerm}&limit=${RESULT_LIMIT}&appid=${API_KEY}`,
     );
     return data as GeoLocation[];
   };
