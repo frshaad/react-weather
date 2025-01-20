@@ -1,5 +1,5 @@
 import { IoTelescopeOutline } from 'react-icons/io5';
-import { LuCloudy, LuDroplets, LuGaugeCircle, LuWind } from 'react-icons/lu';
+import { LuCloudy, LuDroplets, LuGauge, LuWind } from 'react-icons/lu';
 import { useParams } from 'react-router-dom';
 
 import useFetchCurrent from '@/hooks/useFetchCurrent';
@@ -70,11 +70,7 @@ export default function CurrentOverview() {
         </ConditionInfo>
       </div>
       <div className="sm:row-start-3 md:col-start-2 md:row-start-2">
-        <ConditionInfo
-          title="pressure"
-          icon={LuGaugeCircle}
-          data={`${pressure} hPa`}
-        >
+        <ConditionInfo title="pressure" icon={LuGauge} data={`${pressure} hPa`}>
           <PressureIndicator pressure={pressure} />
         </ConditionInfo>
       </div>

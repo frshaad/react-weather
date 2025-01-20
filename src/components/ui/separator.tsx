@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-/* eslint-disable react/prop-types */
+
 import * as SeparatorPrimitive from '@radix-ui/react-separator';
 import * as React from 'react';
 

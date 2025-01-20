@@ -1,4 +1,5 @@
-import { LuDroplet, LuDroplets, LuPalmtree } from 'react-icons/lu';
+import { GiPalmTree } from 'react-icons/gi';
+import { LuDroplet, LuDroplets } from 'react-icons/lu';
 
 import { cn } from '@/lib/utils';
 
@@ -38,7 +39,7 @@ export default function HumidityIndicator({ humididty }: Props) {
         )}
         {indicator === 'dry' && (
           <>
-            <LuPalmtree className="text-orange-500/70" size={18} /> {indicator}
+            <GiPalmTree className="text-orange-500/70" size={18} /> {indicator}
           </>
         )}
       </p>

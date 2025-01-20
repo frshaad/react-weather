@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable consistent-return */
-/* eslint-disable react/prop-types */
+
 /* eslint-disable @typescript-eslint/no-shadow */
 import useEmblaCarousel, {
   type UseEmblaCarouselType,

@@ -1,4 +1,4 @@
-import { LuHome } from 'react-icons/lu';
+import { GrHomeRounded } from 'react-icons/gr';
 import { Link } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
@@ -14,7 +14,7 @@ export default function NotFound() {
         <p className="mt-4">We can&apos;t find that page.</p>
         <Button variant="outline" className="mt-8" asChild>
           <Link to="/">
-            <LuHome className="mr-2" size={18} />
+            <GrHomeRounded className="mr-2" size={18} />
             Back to Home
           </Link>
         </Button>
